@@ -18,7 +18,8 @@
     "start": "probot run ./lib/index.js",
     "lint": "standard **/*.ts --fix",
     "test": "jest && standard **/*.ts",
-    "test:watch": "jest --watch --notify --notifyMode=change --coverage"
+    "test:watch": "jest --watch --notify --notifyMode=change --coverage",
+    "heroku-postbuild": "npm install && npm run build"
   },
   "dependencies": {
     "nock": "^10.0.0",
