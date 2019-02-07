@@ -9,7 +9,7 @@ export = (app: Application) => {
 
     const comment = `Thanks for making a pull request to JupyterLab!
 
-To try out this branch on [binder](https://mybinder.org), follow this link: [![Binder](https://mybinder.org/badge_logo.svg)](https://mybinder.org/v2/gh/${user}/${repo}/${ref})`
+To try out this branch on [binder](https://mybinder.org), follow this link: [![Binder](https://mybinder.org/badge_logo.svg)](https://mybinder.org/v2/gh/${user}/${repo}/${ref}?urlpath=lab-dev)`
     const issueComment = context.issue({ body: comment })
     await context.github.issues.createComment(issueComment)
   })
