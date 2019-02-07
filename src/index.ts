@@ -2,10 +2,11 @@ import { Application } from 'probot' // eslint-disable-line no-unused-vars
 
 export = (app: Application) => {
   app.on('pull_request.opened', async (context) => {
-    console.log(context.payload);
-    const ref = context.payload.head.ref; 
-    const user = context.payload.head.user.login;
-    const repo = context.payload.head.repo.name;
+    console.log(context.payload.pull_request);
+    const head = context.payload.pull_request.head;
+    const ref = head.ref;
+    const user = head.user.login;
+    const repo = head.repo.name;
 
     const comment = `Thanks for making a pull request to JupyterLab!
 
