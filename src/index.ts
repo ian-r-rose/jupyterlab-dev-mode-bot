@@ -3,7 +3,7 @@ import { Application } from 'probot' // eslint-disable-line no-unused-vars
 export = (app: Application) => {
   app.on('pull_request.opened', async (context) => {
     const head = context.payload.pull_request.head;
-    const ref = head.ref;
+    const ref = encodeURIComponent(head.ref);
     const user = head.user.login;
     const repo = head.repo.name;
 
