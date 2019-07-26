@@ -8,12 +8,13 @@ export = (app: Application) => {
     const repo = head.repo.name;
 
     // Get binder url
-    const config = await context.config('config.yml', { 'binder_url': 'https://mybinder.org' })
-    const binder = config.binder_url
+    const binder = await context.config('binder.yml', { 'binderHubUrl': 'https://mybinder.org' })
+    const prose = await context.config('binder.yml', { 'binderComment': `Thanks for making a pull request to ${repo}!` })
+    const suffix = await context.config('binder.yml', { 'binderUrlSuffix': '' })
 
-    const comment = `Thanks for making a pull request to ${repo}!
+    const comment = `${prose}
 
-To try out this branch on [binder](${binder}), follow this link: [![Binder](${binder}/badge_logo.svg)](${binder}/v2/gh/${user}/${repo}/${ref})`
+To try out this branch on [binder](${binder}), follow this link: [![Binder](${binder}/badge_logo.svg)](${binder}/v2/gh/${user}/${repo}/${ref}${suffix})`
     const issueComment = context.issue({ body: comment })
     await context.github.issues.createComment(issueComment)
   })
