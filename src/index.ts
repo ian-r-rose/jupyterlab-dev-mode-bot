@@ -7,9 +7,14 @@ export = (app: Application) => {
     const user = head.user.login;
     const repo = head.repo.name;
 
-    const comment = `Thanks for making a pull request to JupyterLab!
+    // Get binder url
+    const binder = await context.config('binder.yml', { 'binderHubUrl': 'https://mybinder.org' })
+    const prose = await context.config('binder.yml', { 'binderComment': `Thanks for making a pull request to ${repo}!` })
+    const suffix = await context.config('binder.yml', { 'binderUrlSuffix': '' })
 
-To try out this branch on [binder](https://mybinder.org), follow this link: [![Binder](https://mybinder.org/badge_logo.svg)](https://mybinder.org/v2/gh/${user}/${repo}/${ref}?urlpath=lab-dev)`
+    const comment = `${prose}
+
+To try out this branch on [binder](${binder}), follow this link: [![Binder](${binder}/badge_logo.svg)](${binder}/v2/gh/${user}/${repo}/${ref}${suffix})`
     const issueComment = context.issue({ body: comment })
     await context.github.issues.createComment(issueComment)
   })

@@ -1,12 +1,12 @@
 {
-  "name": "jupyterlab-dev-mode-bot",
+  "name": "binder-pr-bot",
   "version": "1.0.0",
-  "description": "A GitHub bot generating binder links for JupyterLab PRs",
-  "author": "Ian Rose <ian.r.rose@gmail.com>",
+  "description": "A GitHub bot generating binder links for GitHub PRs",
+  "author": "Joe Hamman <jhamman@ucar.edu>",
   "license": "ISC",
-  "repository": "https://github.com//jupyterlab-dev-mode-bot.git",
-  "homepage": "https://github.com//jupyterlab-dev-mode-bot",
-  "bugs": "https://github.com//jupyterlab-dev-mode-bot/issues",
+  "repository": "https://github.com/binder-pr-bot.git",
+  "homepage": "https://github.com/binder-pr-bot",
+  "bugs": "https://github.com/binder-pr-bot/issues",
   "keywords": [
     "probot",
     "github",
